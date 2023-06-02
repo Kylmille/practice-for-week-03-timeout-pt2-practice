@@ -1,13 +1,13 @@
 /***********************************************************************
 Write a function, `dynamicIntervalCount`, that accepts a callback, a delay
-in milliseconds, and an optional amount as arguments. The function should 
-set an interval with the given callback and delay. If an amount argument 
-is passed, the interval should be cleared after the callback has been 
+in milliseconds, and an optional amount as arguments. The function should
+set an interval with the given callback and delay. If an amount argument
+is passed, the interval should be cleared after the callback has been
 called 'amount' number of times. If an amount argument is not passed,
 the interval should not be cleared and `dynamicIntervalCount` should instead
 return the Timeout object for the interval.
 
-In addition to Mocha, we recommend that you test your code manually using 
+In addition to Mocha, we recommend that you test your code manually using
 node with the examples below.
 
 Examples:
@@ -23,9 +23,31 @@ const timeoutObject = dynamicIntervalCount(function() {
 
 console.log(timeoutObject); // Timeout { ... }
 ***********************************************************************/
-
 function dynamicIntervalCount(cb, delay, amount) {
-  // Your code here
+  let count = 0;//Create a variable called count and set it to 0
+  let intervalId;//Create a variable called intervalId and leave it undefined
+
+  const executeCallback = () => {//Create a function called executeCallback:
+    cb();// Invoke the provided callback cb()
+    count++;// Increment the count by 1
+
+    if (typeof amount === 'number' && count === amount) {
+    //If an amount argument is passed and the count reaches the desired amount:
+      clearInterval(intervalId);
+    //Clear the interval using clearInterval(intervalId)
+
+    }
+  };
+
+  intervalId = setInterval(executeCallback, delay);
+  // Set an interval with the executeCallback as the
+  //callback function and the specified delay, and store the intervalId
+
+  if (typeof amount !== 'number') {
+  // If an amount argument is not provided (typeof amount is not 'number'):
+    return intervalId;
+    // Return the intervalId
+  }
 }
 
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
