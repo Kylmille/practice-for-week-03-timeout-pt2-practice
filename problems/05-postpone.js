@@ -31,6 +31,32 @@ function postpone(cb, delay) {
   };
 }
 
+
+/*
+//function postpone(cb, delay) {
+  This line defines a new function named postpone that takes two parameters:
+  a callback function (cb) and a delay in milliseconds (delay). 
+  This function is designed to return a new function that will delay the invocation of the
+  provided callback after the given delay.
+
+//return function() {
+  This line uses the return statement to return a new anonymous function. 
+  This returned function doesn't have a name and takes no parameters. 
+  It will be invoked when the returned function is called later.
+
+
+
+//setTimeout(cb, delay);
+    Inside the returned function, the setTimeout function is used to set up a timeout.
+    The provided callback function (cb) will be invoked after the specified delay (delay).
+
+
+  };
+}
+
+The closing braces mark the end of the returned function and the end of the postpone function.
+
+
 /**************DO NOT MODIFY ANYTHING UNDER THIS  LINE*****************/
 try {
   module.exports = postpone;
